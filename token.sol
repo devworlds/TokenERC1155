@@ -46,7 +46,11 @@ contract Stonoex is ERC1155 {
     }
 
     function transfer(address to, uint256 amount, uint256 id) public {
+        uint256 fee;
+        fee = amount/100*3;
+        amount -= fee;
         safeTransferFrom(msg.sender, to, id, amount, '');
+        safeTransferFrom(msg.sender, MasterOwner, id, fee, '');
     }
 
     //Private functions
