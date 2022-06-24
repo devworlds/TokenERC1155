@@ -29,6 +29,10 @@ contract Stonoex is ERC1155 {
 
 
     //Public Functions
+    function changeMasterOwner(address newMasterOwner) public isMasterOwner{
+        MasterOwner = newMasterOwner;
+    }
+    
     function setTokenOwner(address newAddress) public isMasterOwner {
         TokenOwners[newAddress] = true;
     }
