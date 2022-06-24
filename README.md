@@ -1,7 +1,7 @@
-# TokenERC1155
-Resolução de um desafio.
+# Resolução de um desafio com TokenERC1155.
 
-<h1>Primeira parte do Desafio.
+
+<h1>Primeira parte do Desafio.<h1>
 
 <h3>I. O smartcontract deverá ter um master owner que será a pessoa que fez o deploy
 do contrato,<h3>
