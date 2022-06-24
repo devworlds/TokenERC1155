@@ -4,7 +4,7 @@ Resolução de um desafio.
 <h1>Primeira parte do Desafio.
 
 <h2>I. O smartcontract deverá ter um master owner que será a pessoa que fez o deploy
-do contrato,<h2></br>
+do contrato,<h2>
 <h2>II. O master owner pode definir um novo master owner e o novo master owner deverá
 aceitar para a transferência ser completada,<h2></br>
 <h2>III. O smartcontract poderá ter mais de um owner token,<h2></br>
