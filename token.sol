@@ -40,7 +40,7 @@ contract Stonoex is ERC1155 {
     }
 
     //Events
-    event SetMasterOwner(address newMasterOwner);
+    event SetMasterOwner(address oldMasterOwner, address newMasterOwner);
     event SetTokenOwner(address newTokenOwner);
     event DeleteTokenOwner(address delTokenOwner);
     event SetChangeMasterOwner(address newChangeMaster);
@@ -50,8 +50,8 @@ contract Stonoex is ERC1155 {
     //Public Functions
     function changeMasterOwner(address newMasterOwner) public isMasterOwner{
         require(changeNewMaster == true, "New MasterOnwer Dont accept the invite.");
+        emit SetMasterOwner(MasterOwner, newMasterOwner);
         MasterOwner = newMasterOwner;
-        emit SetMasterOwner(newMasterOwner);
         changeNewMaster = false;
         newMaster = 0x0000000000000000000000000000000000000000;
     }
@@ -73,7 +73,7 @@ contract Stonoex is ERC1155 {
 
     function deleteTokenOwner(address oldAddress) public isMasterOwner {
         TokenOwners[oldAddress] = false;
-        deleteTokenOwner(oldAddress);
+        emit DeleteTokenOwner(oldAddress);
     }
 
     function mint(address mintAddress, uint256 id, uint256 amount) public isTokenOwner{
