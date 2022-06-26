@@ -6,13 +6,15 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 contract Stonoex is ERC1155 {
 
     //Properties
-    uint256 public constant GOLD = 1;
-    uint256 public constant SILVER = 2;
-    uint256 public constant COOPER = 3;
-    uint256 public constant DIAMOND = 4;
+    uint256 public constant GOLD = 0;
+    uint256 public constant SILVER = 1;
+    uint256 public constant COOPER = 2;
+    uint256 public constant DIAMOND = 3;
 
     address public MasterOwner;
+    address public newMaster;
     uint256 public feeValue = 3;
+    bool changeNewMaster;
     mapping(address => bool) public TokenOwners; 
     mapping(uint => address) public TokenMintID;
 
@@ -32,16 +34,36 @@ contract Stonoex is ERC1155 {
         _;
     }
 
+    modifier isNewMaster(){
+        require(newMaster == msg.sender, "is not an Wallet that was choosed for Master for be new MasterOwner!");
+        _;
+    }
+
     //Events
     event SetMasterOwner(address newMasterOwner);
     event SetTokenOwner(address newTokenOwner);
     event DeleteTokenOwner(address delTokenOwner);
+    event SetChangeMasterOwner(address newChangeMaster);
+    event AnswerMasterOwner(bool Answer);
 
 
     //Public Functions
     function changeMasterOwner(address newMasterOwner) public isMasterOwner{
+        require(changeNewMaster == true, "New MasterOnwer Dont accept the invite.");
         MasterOwner = newMasterOwner;
         emit SetMasterOwner(newMasterOwner);
+        changeNewMaster = false;
+        newMaster = 0x0000000000000000000000000000000000000000;
+    }
+
+    function setNewMaster(address newMasterAddress) public isMasterOwner {
+        newMaster = newMasterAddress;
+        emit SetChangeMasterOwner(newMasterAddress);
+    }
+
+    function acceptMasterChange() public isNewMaster{
+        changeNewMaster = true;
+        emit AnswerMasterOwner(changeNewMaster);
     }
     
     function setTokenOwner(address newAddress) public isMasterOwner {
