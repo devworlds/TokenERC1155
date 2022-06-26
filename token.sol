@@ -62,7 +62,7 @@ contract Stonoex is ERC1155 {
     }
 
     function acceptMasterChange() public isNewMaster{
-        changeNewMaster = true;
+        changeNewMaster = !changeNewMaster;
         emit AnswerMasterOwner(changeNewMaster);
     }
     
