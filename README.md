@@ -1,15 +1,15 @@
-# Resolução de um desafio com TokenERC1155.
+# Resolution of a challenge with TokenERC1155.
 
 
-<h1>Primeira parte do Desafio.<h1>
+<h1>First part of the Challenge.<h1>
 
-<h3>I. O smartcontract deverá ter um master owner que será a pessoa que fez o deploy
-do contrato,<h3>
-<h3>II. O master owner pode definir um novo master owner e o novo master owner deverá
-aceitar para a transferência ser completada,<h3>
-<h3>III. O smartcontract poderá ter mais de um owner token,<h3>
-<h3>IV. Somente o master owner poderá adicionar ou retirar owner token,<h3>
-<h3>V. O owner token poderá realizar mint, burn de um fungible token que ele criou dentro
-do erc1155.<h3>
-<h3>VI. Sempre que uma transação ocorrer um fee deverá ser enviado para o master
+<h3>I. The smartcontract must have a master owner who will be the person who deployed it
+of the contract,<h3>
+<h3>II. The master owner can define a new master owner and the new master owner must
+accept for the transfer to be completed,<h3>
+<h3>III. The smartcontract may have more than one owner token,<h3>
+<h3>IV. Only the master owner can add or remove owner token,<h3>
+<h3>V. The token owner will be able to mint, burn a fungible token that he created within
+from erc1155.<h3>
+<h3>VI. Whenever a transaction occurs, a fee must be sent to the master
 owner.<h3>
